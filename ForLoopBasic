@@ -1,0 +1,14 @@
+import java.lang.*;
+import java.util.*;
+
+class forloopbasic{
+    public static void main(String arg[]){
+	int n, i;
+	Scanner inp = new Scanner(System.in);
+
+	System.out.println("Enter the range: ");
+	n = inp.nextInt();
+	for(i=1;i<=n;i++)
+	    System.out.println(i);
+}
+}
