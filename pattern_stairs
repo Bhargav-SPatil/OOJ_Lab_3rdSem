@@ -1,0 +1,19 @@
+import java.lang.*;
+import java.util.*;
+
+class pattern1{
+
+public static void main(String args[]){
+int i, j, k=1;
+int n;
+Scanner inp = new Scanner(System.in);
+System.out.print("Enter the number of rows you require: ");
+n = inp.nextInt();
+for(i=0; i<n; i++){
+for(j=0; j<=i; j++)
+System.out.print(k++ + " ");
+System.out.println();
+}
+}
+
+}
