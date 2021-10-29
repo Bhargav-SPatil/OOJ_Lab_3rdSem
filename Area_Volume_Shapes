@@ -1,0 +1,46 @@
+import java.lang.*;
+import java.util.*;
+
+class areanvol{
+
+Scanner inp = new Scanner(System.in);
+
+float cylinder(){
+System.out.println("Enter the values");
+System.out.println("Height: ");
+h = inp.nextFloat();
+System.out.println("Radius of base: ");
+r = inp.nextFloat();
+area = (2*3.14*r*h) + (2*3.14*r*r);
+vol = 3.14*r*r*h;
+println("Area of cylinder = " + area);
+println("Volume of cylinder = " + vol);
+}
+
+float cone(){
+System.out.println("Enter the values");
+System.out.println("Height: ");
+h = inp.nextFloat();
+System.out.println("Radius of base: ");
+r = inp.nextFloat();
+area = 3.14*r*(r + math.sqrt((h*h)+(r*r)));
+vol = (3.14*r*r*h)/3;
+println("Area of cylinder = " + area);
+println("Volume of cylinder = " + vol);
+}
+
+float sphere(){
+System.out.println("Enter the values");
+System.out.println("Radius of sphere: ");
+r = inp.nextFloat();
+area = 4*3.14*r*r;
+vol = (4/3)*3.14*r*r*r;
+println("Area of cylinder = " + area);
+println("Volume of cylinder = " + vol);
+}
+
+public static void main(Strings args[]){
+
+}
+
+}
