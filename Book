@@ -1,0 +1,74 @@
+import java.lang.*;
+import java.util.*;
+
+class book{
+
+String name, author;
+float price;
+int num_pages;
+
+Scanner in = new Scanner(System.in);
+
+book(){
+name = "";
+author = "";
+price = 0;
+num_pages = 0;
+}
+
+void inp_details(){
+
+in.nextLine();
+System.out.print("Name: ");
+name = in.nextLine();
+in.nextLine();
+System.out.print("Author: ");
+author = in.nextLine();
+System.out.print("Price: ");
+price = in.nextFloat();
+System.out.print("Number of pages: ");
+num_pages = in.nextInt();
+
+}
+
+public String toString(){
+
+System.out.println("Name: " + name);
+System.out.println("Author: " + author);
+System.out.println("Price: " + price);
+System.out.println("Number of pages: " + num_pages);
+return("Finished");
+}
+
+}
+
+
+class bookmain{
+
+public static void main(String args[]){
+
+int n;
+book b;
+Scanner in = new Scanner(System.in);
+System.out.println("Enter the number of books: ");
+n = in.nextInt();
+book  array[] = new book[n];
+for(int i = 0; i < n; i++){
+System.out.println("Please Enter the details of the Book");
+array[i] = new book();
+array[i].inp_details();
+}
+
+String x;
+in.nextLine();
+System.out.println("Enter the name of the book which you need to get the details of: ");
+System.out.println("Enter * to exit");
+x = in.nextLine();
+while(!x .equals('*')){
+for(int i = 0; i < n; i++){
+if(x == array[i].name)
+System.out.println(array[i]);
+}
+}
+}
+}
