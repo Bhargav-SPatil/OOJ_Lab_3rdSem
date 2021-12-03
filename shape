@@ -1,0 +1,58 @@
+import java.lang.*;
+
+abstract class shape{
+
+int l=20, b=10;
+
+public static void main(String args[]){
+
+Rectangle rect = new Rectangle();
+Triangle tri = new Triangle();
+Circle cir = new Circle();
+
+rect.printArea();
+tri.printArea();
+cir.printArea();
+
+}
+
+abstract void printArea();
+
+}
+
+class Rectangle extends shape{
+
+void printArea(){
+
+int area;
+area = l*b;
+System.out.println("Area of rectangle is: " + area);
+
+}
+
+}
+
+class Triangle extends shape{
+
+void printArea(){
+
+float area;
+area = (float)0.5*l*b;
+System.out.println("Area of triangle is: " + area);
+
+}
+
+}
+
+
+class Circle extends shape{
+
+void printArea(){
+
+float area;
+area = (float)3.14*l*l;
+System.out.println("Area of circle is: " + area);
+
+}
+
+}
