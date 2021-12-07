@@ -1,1 +1,39 @@
+import java.lang.*;
+import java.util.*;
 
+class quadratic{
+
+public static void main(String args[]){
+
+int a, b, c, delta;
+float x, x1, x2;
+Scanner in = new Scanner(System.in);
+
+System.out.println("Enter the values");
+System.out.print("a: ");
+a = in.nextInt();
+System.out.print("b: ");
+b = in.nextInt();
+System.out.print("c: ");
+c = in.nextInt();
+
+delta = (b*b)-(4*a*c);
+if(delta < 0){
+
+System.out.println("No real solutions exist");
+
+}else if(delta == 0){
+
+x = (float)(-b)/(2*a);
+System.out.println("The roots of the equation are equal and they are: " + x);
+
+}else{
+
+x1 = (float)((-b)+(Math.sqrt(delta)))/(2*a);
+x2 = (float)((-b)-(Math.sqrt(delta)))/(2*a);
+System.out.println("The roots of the equation are: " + x1 + ", " + x2);
+
+}
+}
+
+}
