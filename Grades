@@ -3,15 +3,15 @@ import java.util.*;
 
 class grades{
 
-    public static void main(String args[]){
-        float sum=0, grade;
-        int i, no_creds = 0;
-        int credits[] = new int[10];
-        float[] see, cie, total;
-        see = new float[10];
-        cie = new float[10];
-        total = new float[10];
-        Scanner inp = new Scanner(System.in);
+    Scanner inp = new Scanner(System.in);
+    float sum=0, sgpa, x;
+    int i, no_creds = 0;
+    int credits[] = new int[10];
+    float see[] = new float[10];
+    float cie[] = new float[10];
+    float total[] = new float[10];
+
+    void details(){
         System.out.println("Enter the credits: ");
         for(i = 0; i < 6; i++){
             System.out.print((i+1) + " -> ");
@@ -28,33 +28,42 @@ class grades{
             System.out.print((i+1) + " -> ");
             see[i] = inp.nextFloat();
         }
+    }
+
+    void disp_sgpa(){
+
         for(i=0; i<6; i++){
             total[i] = cie[i] + (see[i]/2);
         }
+
+        
         for(i=0; i<6; i++){
-            sum = sum + (credits[i] * total[i]);
+            x = total[i];
+            if(x >=90 && x <=100)
+            sum = sum + 10*credits[i];
+            else if(x >=80 && x <90)
+            sum = sum + 9*credits[i];
+            else if(x >=70 && x <80)
+            sum = sum + 8*credits[i];
+            else if(x >=60 && x <70)
+            sum = sum + 7*credits[i];
+            else if(x >=40 && x <60)
+            sum = sum + 6*credits[i];
+            else if(x >=0 && x <40)
+            sum = sum + 0*credits[i];
+            else
+            System.out.println("Please enter a valid marks");
         }
 
-        grade = sum/600;
-        System.out.println(grade);
-                
+        sgpa = (float)sum/no_creds;
+        System.out.println("SGPA is: " + sgpa);
 
-        if(grade >=9 && grade <=10)
-        System.out.println("S Grade");
-        else if(grade >=8 && grade <9)
-        System.out.println("A Grade");
-        else if(grade >=7 && grade <8)
-        System.out.println("B Grade");
-        else if(grade >=6 && grade <7)
-        System.out.println("C Grade");
-        else if(grade >=5 && grade <6)
-        System.out.println("D Grade");
-        else if(grade >=4 && grade <5)
-        System.out.println("E Grade");
-        else if(grade >=0 && grade <4)
-        System.out.println("B Grade");
-        else
-        System.out.println("Please enter a valid marks");
+    }
+
+    public static void main(String args[]){
+        grades s1 = new grades();
+        s1.details();
+        s1.disp_sgpa();
     }
 
 }
