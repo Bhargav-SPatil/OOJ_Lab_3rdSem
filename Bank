@@ -1,0 +1,147 @@
+import java.lang.*;
+import java.util.*;
+
+class Bank{
+    public float amount;
+
+
+    public static void main(String args[]) {
+        String name;
+        int acc_no, choice1, choice2;
+        Scanner in = new Scanner(System.in);
+        in.nextLine();
+        System.out.print("Enter the customer's name: ");
+        name = in.nextLine();
+        System.out.print("Enter the account number: ");
+        acc_no = in.nextInt();
+        while(true){
+            System.out.println("Choose the type of account. Press 3 to exit");
+            System.out.println("1. Savings Account \t\t 2. Current Account");
+            choice1 = in.nextInt();
+            System.out.println("Choose the operation you want to perform");
+            System.out.println("1. Deposit \t\t 2. Display Balance \t\t 3. Interest \t\t 4. Withdrawal \t\t 5. Checkbook");
+            choice2 = in.nextInt();
+            switch(choice1){
+                case 1:{
+                    Sav_acct savings = new Sav_acct();
+                    switch(choice2){
+                        case 1: savings.deposit();
+                        break;
+                        case 2: savings.disp_balance();
+                        break;
+                        case 3: savings.cmp_interest();
+                        break;
+                        case 4: savings.withdrawal();
+                        break;
+                        case 5: savings.checkbook();
+                        break;
+                        default:
+                        System.out.println("Please enter a valid choice");
+                        break;
+                    }
+                }break;
+                case 2:{
+                    Cur_acct current = new Cur_acct();
+                    switch(choice2){
+                        case 1: current.deposit();
+                        break;
+                        case 2: current.disp_balance();
+                        break;
+                        case 3: current.cmp_interest();
+                        break;
+                        case 4: current.withdrawal();
+                        break;
+                        case 5: current.checkbook();
+                        break;
+                        default:
+                        System.out.println("Please enter a valid choice");
+                        break;
+                    }
+                }break;
+                case 3: System.exit(0);
+                default: System.out.println("Please enter a valid choice");
+            }
+        }
+    }
+}
+
+class Sav_acct extends Bank{
+
+    float dep_amt, intrst, with_amt;
+
+    Scanner inp = new Scanner(System.in);
+
+    void deposit(){
+        System.out.print("Enter the amount to deposit: ");
+        dep_amt = inp.nextFloat();
+        amount = amount + dep_amt;
+    }
+
+    void disp_balance(){
+        System.out.println("Balance Amount: " + amount);
+    }
+
+    void cmp_interest(){
+        intrst = (float)amount*2;
+        System.out.println("Compound Interest for one year compounded anually is: " + intrst);
+    }
+
+    void withdrawal(){        
+        if(amount <= 0){
+            System.out.println("You have zero balance");
+            return;
+        }
+        System.out.print("Enter the amount to withdraw: ");
+        with_amt = inp.nextFloat();
+        if(with_amt > amount){
+            System.out.println("The withdraw amount is more than the balance");
+        }else{
+            amount = amount - with_amt;
+        }
+    }
+
+    void checkbook(){
+        System.out.println("No check books available");
+    }
+}
+
+class Cur_acct extends Bank{
+
+    float dep_amt, intrst, with_amt;
+
+    Scanner inp = new Scanner(System.in);
+
+    void deposit(){
+        System.out.print("Enter the amount to deposit: ");
+        dep_amt = inp.nextFloat();
+        amount = amount + dep_amt;
+    }
+
+    void disp_balance(){
+        System.out.println("Balance Amount: " + amount);
+    }
+
+    void cmp_interest(){
+        System.out.println("Compound Interest is not available for current account");
+    }
+
+    void withdrawal(){
+        if(amount <= 0){
+            System.out.println("You have zero balance");
+            return;
+        }
+        System.out.print("Enter the amount to withdraw: ");
+        with_amt = inp.nextFloat();
+        if(with_amt > amount){
+            System.out.println("The withdraw amount is more than the balance");
+        }else{
+            amount = amount - with_amt;
+        }
+        if(amount < 100)
+            System.out.println("Your Balance is less than the minimum balance. You shall be penalized.");
+    }
+
+    void checkbook(){
+        System.out.println("Check books are available");
+    }
+}
