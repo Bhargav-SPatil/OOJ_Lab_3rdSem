@@ -1,0 +1,56 @@
+class WrongAge extends Exception{
+    String str;
+    WrongAge(String s){
+        str = s;
+    }
+    public String toString(){
+        return str;
+    }
+}
+
+class father{
+    public String s1 = "Father's Age cannot be be a negative number";
+    public String s2 = "Son's Age cannot be be a negative number";
+    public String s3 = "Son's age cannot be greater than or equal to father's age";
+    public int father_age;
+    father(int fAge){
+        father_age = fAge;
+    }
+    
+    void getFAge(int fAge) throws WrongAge{
+        if(fAge < 0){
+            throw new WrongAge(s1);
+        }
+        System.out.println("Father's age is: " + father_age);
+    }
+}
+
+class son extends father{
+    public int son_age;
+    son(int sAge, int fAge){
+        super(fAge);
+        son_age = sAge;
+    }
+    
+    void getSAge(int sAge, int fAge) throws WrongAge{
+        super.getFAge(fAge);
+        if(sAge < 0){
+            throw new WrongAge(s2);
+        }else if(sAge >= fAge){
+            throw new WrongAge(s3);
+        }
+        System.out.println("Son's Age is: " + son_age);
+    }
+}
+
+public class MyClass {
+    int fathers_age;
+    public static void main(String args[]) {
+        son s = new son(10, 40);
+        try{
+            s.getSAge(s.son_age, s.father_age);
+        }catch(WrongAge e){
+            System.out.println("Caught: " + e);
+        }
+    }
+}
